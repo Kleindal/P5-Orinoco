@@ -107,7 +107,7 @@ getProduits = () =>{
       	//Déterminer le contenu des balises
       	produitNom.textContent = produit.name;
       	produitPrix.textContent = produit.price / 100 + " euros";
-      	produitLink.textContent = "Voir le produit";
+        produitLink.textContent = "Voir le produit";
       });
 	};
 
@@ -439,15 +439,32 @@ resultOrder = () =>{
   window.open("./index.html");
 }
 }
+
+
+
+
+
 var timeout;
 
-$('#cart').on({
+$('#basket').on({
     mouseenter: function() {
-        $('#cart-dropdown').show();
+        $('#basket-dropdown').show();
     },
     mouseleave: function() {
         timeout = setTimeout(function() {
-            $('#cart-dropdown').hide();
+            $('#basket-dropdown').hide();
         }, 200);
     }
 });
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+d.toUTCString();
+
+  if ('btoa' in window) {
+      cvalue = btoa(cvalue);
+  }
+
+  document.cookie = cname + "=" + cvalue + "; " + expires+';path=/';
+}
